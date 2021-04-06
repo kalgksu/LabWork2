@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Перетаскивание предмета мышью</title>
+	<meta charset="utf-8">
+</head>
+<body style="background-color: #87ceeb;">
+
+<h1>Собери разбитое сердешко</h1>
+
+<div>
+  <a href="Lab2.6.html"><button>Следующее задание</button></a>
+</div>
+
+<img src="pazlSmall.svg" alt="PazlChast" id="img" style="width: 130px; height: 130px;">
+
+<img src="pazl.svg" alt="PazlHeart" align="right" style="width: 400px; height: 400px;">
+
+<script type="text/javascript" src="jquery-3.6.0.js"></script>
+
+<script type="text/javascript">
+
+	var img = document.getElementById('img');
+
+  img.onmousedown = function(e) {
+
+  var coords = getCoords(img);
+  var shiftX = e.pageX - coords.left;
+  var shiftY = e.pageY - coords.top;
+
+  img.style.position = 'absolute';
+  document.body.appendChild(img);
+  moveAt(e);
+
+  img.style.zIndex = 1000; // над другими элементами
+
+  function moveAt(e) {
+    img.style.left = e.pageX - shiftX + 'px';
+    img.style.top = e.pageY - shiftY + 'px';
+  }
+
+  document.onmousemove = function(e) {
+    moveAt(e);
+  };
+
+  img.onmouseup = function() {
+    document.onmousemove = null;
+    img.onmouseup = null;
+  };
+
+}
+
+img.ondragstart = function() {
+  return false;
+};
+
+function getCoords(elem) {   // кроме IE8-
+  var box = elem.getBoundingClientRect();
+  return {
+    top: box.top + pageYOffset,
+    left: box.left + pageXOffset
+  };
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Позиционирование картинки</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-color: #87ceeb;
+			background: url(back.png);
+			background-size: cover;
+		}
+		.button_panel{
+			margin-top: 20%;
+			max-width: 10%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background: #12a1e0;
+			padding: 20px;
+			border-radius: 50%; 
+		}
+		.right{
+			margin-left:25px;
+		}
+ 		#img{
+ 			display: inline-block;
+			position: relative;
+ 		}
+	</style>
+</head>
+<body>
+
+	<img src="BB.gif" alt="Spanche Bob" id="img" style="width: 300px;height: 177px;">
+
+	<div class="button_panel">
+		<button class="up">Вверх</button>
+	<div>
+		<button class="left">Влево</button>
+
+		<button class="right">Вправо</button>
+	</div>
+		<button class="down">Вниз</button>
+	</div>
+
+	<br>
+	
+	<a href="Lab2.4.html"><button>Следующее задание</button></a>
+
+	<script type="text/javascript" src="jquery-3.6.0.js"></script>
+	
+	<script type="text/javascript">
+
+	$(".up").click(function(){
+    $("#img").animate({top: "-=100"})
+    return false;
+    });
+    $(".right").click(function(){
+    $("#img").animate({left: "+=100"})
+    return false;
+    });
+    $(".left").click(function(){
+    $("#img").animate({left: "-=100"})
+    return false;
+    });
+    $(".down").click(function(){
+    $("#img").animate({top: "+=100"})
+    return false;
+    });
+	</script>
+</body>
+</html>

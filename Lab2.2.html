@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Проверка правильности формы</title>
+	<meta charset="utf-8">
+	<style>
+	  .error {
+	    background: red;
+	  }
+	  body{
+	  	display: flex;
+	  	justify-content: center;
+	  	align-items: center;
+	  	background: #38b0de;
+	  	flex-direction: column;
+	  }
+	  .commentariy{
+	  	display: flex;
+	  	flex-direction: column;
+	  	padding: 15px;
+	  	background: #ddd;
+	  	border-radius: 20px;
+	  	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	  }
+	  .commentariy p{
+	  	display: flex;
+	  	align-items: space-between;
+	  }
+	  .commentariy label,
+	  .commentariy input,
+	  .commentariy button{
+	  	display: inline-block;
+	  	width: 48%;
+	  	border-radius: 5px;
+	  	border: none;
+	  }
+	  textarea{
+	  	width: 48%;
+	  	height: 70px;
+	  	border: none;
+	  	border-radius: 5px;
+	  }
+	</style>
+</head>
+<body>
+
+<form name="commentariy" class="commentariy">
+	<p>
+		<label>
+			Ваше имя:
+		</label>
+		
+		<input type="text" name="Name">
+	</p>
+
+	<p>
+		<label>
+			Ваш пароль:
+		</label>
+
+		<input type="password" name="password">
+	</p>
+
+	<p>
+		<label>
+			Повторите пароль:
+		</label>
+
+		<input type="password" name="check_pass">
+	</p>
+
+	<p>
+		<label>
+			Ваш email:
+		</label>
+
+		<input type="email" name="email">
+
+	</p>
+
+	<p>
+		<label>
+			Тема сообщения:
+		</label>
+
+		<input type="text" name="theme">
+
+	</p>
+
+	<p>
+		<label>
+			Сообщение:
+		</label>
+
+		<textarea name="massage"></textarea>
+	</p>
+
+	<p>
+		<button type="reset">Отчистить</button>
+
+		<input type="button" value="Отправить" onClick="doSend()" style="margin-left: 4%; ">
+	</p>
+
+</form>
+
+ 	<br>
+
+ 	<a href="Lab2.3.html"><button>Следующее задание</button></a>
+<script type="text/javascript">
+
+function doSend(){
+
+	var right_email=document.commentariy.email.value.indexOf("@",1);
+
+	if(document.commentariy.Name.value=="")
+		{ 
+		alert('Поле ФИО не заполнено');
+		document.commentariy.Name.classList.add("error");
+		document.commentariy.Name.focus();
+		return false;
+	}
+
+	if(document.commentariy.password.value==""){
+		document.commentariy.password.classList.add("error");
+		alert('Поле Пароль не заполнено.');
+	    document.commentariy.password.focus();
+	    return false;
+	}
+
+	else if(document.commentariy.password.value.length<=4){
+		document.commentariy.password.classList.add("error");
+		alert('Пароль должен содержать больше 4 символов');
+	    document.commentariy.password.focus();
+	    return false;
+	}
+
+	if((document.commentariy.password.value) != (document.commentariy.check_pass.value)){
+		document.commentariy.check_pass.classList.add("error");
+		alert('Пароли не совпадают');
+	    document.commentariy.check_pass.focus();
+	    return false;
+	}
+
+	if(right_email==-1){
+		document.commentariy.email.classList.add("error");
+		alert('Email введен неверно');
+	    document.commentariy.email.focus();
+	    return false;
+	}
+
+	if(document.commentariy.textarea.value.length<=10){
+		document.commentariy.textarea.classList.add("error");
+		alert('Сообщение должно содержать минимум 10 символов.');
+	    document.commentariy.massage.focus();
+	    return false;
+	}
+
+	else return document.commentariy.submit();
+	}
+
+</script>
+</body>
+</html>

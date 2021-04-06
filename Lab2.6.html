@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Опросник</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			background-color:#5F9EA0;
+			background: url(food.jpg) no-repeat;
+			background-size: cover;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.container{
+			background: rgba(70, 130, 180, 0.9);
+			display: flex;
+			flex-direction: column;
+			min-width: 40%;
+			padding: 1%;
+			border-radius: 30px;
+		}
+		.questions{
+			display: flex;
+			flex-direction: column;
+		}
+		h2{
+			display: inline-block;
+			align-self: center;
+			color: white;
+		}
+		.questions p{
+			display: flex;
+			justify-content: space-between;
+		}
+		.questions label,
+		.questions output{
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			min-width: 40px;
+			min-height: 40px;
+			background: #fff;
+			font-size: 1.2em;
+			border-radius: 50%;
+		}
+		.questions button,input{
+			width: 80%;
+			height: 40px;
+			font-size: 1.2em;
+			border-radius: 30px;
+			outline: none;
+			text-align: center;
+		}
+		.questions button:hover{
+			background: #FF69B4;
+			cursor: pointer;
+			color: white;
+		}
+		.questions button:active{
+			background: #FF1493;
+		}
+	</style>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.4/math.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<h2>Чтобы вы съели на ужин?</h2>
+
+		<form name="questions" class="questions">
+			<p>
+				<label id="1_label" nam="q1"></label>
+
+				<button id="1">Пельмени</button>
+
+				<output id="procent_1" type="text" name="1" readonly></output>
+			</p>
+
+			<p>
+				<label id="2_label"></label>
+
+				<button id="2">Камчатский краб</button>
+
+				<output id="procent_2" type="text" name="2" readonly></output>
+			</p>
+
+			<p>
+				<label id="3_label"></label>
+
+				<button id="3">Кыстыбый</button>
+
+				<output id="procent_3" type="text" name="3" readonly></output>
+			</p>
+
+			<p>
+				<label id="4_label"></label>
+
+				<button id="4">Борщ</button>
+
+				<output id="procent_4" type="text" name="4" readonly></output>
+			</p>
+		</form>
+	</div>
+
+	<button id="btn" style="margin: 20px 0; ">ПРОЦЕНТ ПРОГОЛОСОВАВШИХ</button>
+
+	<br>
+
+	<a href="Lab2.7.html"><button>Следующее задание</button></a>
+
+	<script type="text/javascript" src="jquery-3.6.0.js"></script>
+
+	<script type="text/javascript">
+		   	let q1 = 0;
+		   	let q2 = 0;
+		   	let q3 = 0;
+		   	let q4 = 0;
+		   	let count = 0;
+	$(document).ready(function(){
+    $("#btn").click(function(){
+       document.getElementById("procent_1").value = Math.round((q1/count)*100)+"%";
+       document.getElementById("procent_2").value = Math.round((q2/count)*100)+"%";
+       document.getElementById("procent_3").value = Math.round((q3/count)*100)+"%";
+       document.getElementById("procent_4").value = Math.round((q4/count)*100)+"%";
+      });
+    $("#1").click(function(){
+    	q1 +=1;
+    	count +=1;
+    	$("#1_label").text(q1);
+    	return false;
+    });
+    $("#2").click(function(){
+    	q2 +=1;
+    	count +=1;
+    	$("#2_label").text(q2);
+    	return false;
+    });
+    $("#3").click(function(){
+    	q3 +=1;
+    	count +=1;
+    	$("#3_label").text(q3);
+    	return false;
+    });
+    $("#4").click(function(){
+    	q4 +=1;
+    	count +=1;
+    	$("#4_label").text(q4);
+    	return false;
+    });
+});
+
+	</script>
+</body>
+</html>

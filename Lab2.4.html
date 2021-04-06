@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Положение мыши</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="jquery-3.6.0.js"></script>
+	<style type="text/css">
+		html {
+		   margin: 0px;
+		   height: 100%;
+		   width: 100%;
+		}
+
+		body {
+		   display: flex;
+		   align-items: center;
+		   flex-direction: column;
+		   margin: 0px;
+		   min-height: 100%;
+		   width: 100%;
+		   background-color: #87ceeb;
+		}
+	</style>
+</head>
+
+<body onload="mouse_position()"> 
+
+<form name="Form">
+
+Положение мыши по координате X: <input type="text" name="posx"><br>
+<br>
+Положение мыши по координате Y: <input type="text" name="posy"><br>
+
+</form>
+
+<br>
+	
+<a href="Lab2.5.html"><button>Следующее задание</button></a>
+
+<script type="text/javascript">
+
+$("body").mousemove(function(e) {
+    document.Form.posx.value = e.pageX;
+    document.Form.posy.value = e.pageY;
+})
+
+</script>
+</body>
+</html>
